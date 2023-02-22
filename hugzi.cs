@@ -41,7 +41,7 @@ private async void InitializeCharacter()
 
     // Download the character image from the image URL
     string imageUrl = "https://piskel-imgstore-b.appspot.com/img/c8571105-b305-11ed-8fd9-49b971b166a6.gif";
-    string imageFileName = "character.gif";
+    string imageFileName = "c8571105-b305-11ed-8fd9-49b971b166a6.gif";
     await DownloadFileAsync(imageUrl, imageFileName);
 
     // Create the PictureBox and load the image from file
