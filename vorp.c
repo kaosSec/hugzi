@@ -1,7 +1,4 @@
-        #define SERVER_ADDRESS "127.0.0.1"
-        #define SERVER_PORT 8000
-        
-        __declspec(dllexport) int connect_to_server_and_execute_file() {
+__declspec(dllexport) int connect_to_server_and_execute_file(const char* server_address, int server_port) {
             // Create a socket
             SOCKET sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
             if (sock == INVALID_SOCKET) {
@@ -9,13 +6,12 @@
                 return 1;
             }
         
-            struct sockaddr_in server_addr;
-            server_addr.sin_family = AF_INET;
-            server_addr.sin_port = htons(SERVER_PORT);
-            if (inet_pton(AF_INET, SERVER_ADDRESS, &server_addr.sin_addr) <= 0) {
-                perror("inet_pton");
-                return 1;
-            }
+                server_addr.sin_family = AF_INET;
+                server_addr.sin_port = htons(server_port);
+                if (inet_pton(AF_INET, server_address, &server_addr.sin_addr) <= 0) {
+                    perror("inet_pton");
+                    return 1;
+                }
         
             if (connect(sock, (struct sockaddr *)&server_addr, sizeof(server_addr)) == SOCKET_ERROR) {
                 perror("connect");
