@@ -1,0 +1,4 @@
+LIBRARY hook
+EXPORTS
+    hook_open
+    
