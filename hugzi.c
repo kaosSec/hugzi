@@ -26,7 +26,7 @@ int main() {
         return 1;
     }
 
-    hook_open(pid, "lucy4.exe");
+    hook_open(pid, filename);
 
     FreeLibrary(hDLL);
 
